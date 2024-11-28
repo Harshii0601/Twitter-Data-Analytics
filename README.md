@@ -1,6 +1,5 @@
 # Twitter-Data-Analytics
 
-
 # Twitter_Analytics_Dashboard
 
 ### Dashboard Link : https://app.powerbi.com/view?r=eyJrIjoiZTM5OWZkMjAtYjE5MS00MDYzLTlmOWMtNGQwZGY4OTVmYzc0IiwidCI6Ijg2YTg3NTRlLTg3ZGUtNGMwZC1hOTVhLTZmMGQzZjA0YjRhMCJ9
@@ -88,11 +87,13 @@ Step 1: Data Preparation
 
 - Create calculated column:
 
-        Impression Filter: SocialMedia[impressions] > 500
+        Impression filter(>500) = SocialMedia[impressions] > 500
    
 Step 2: Filtering
 
-- Apply filter: Impression Filter = TRUE
+- Apply filter: 
+   
+      Impression filter(>500) = TRUE
 
 Step 3: Pie Chart Creation
 
@@ -122,27 +123,27 @@ Step 1: Data Preparation
 
 - Create calculated columns:
 
-      Weekday Filter: WEEKDAY('SocialMedia'[Date]) <> 1&& WEEKDAY('SocialMedia'[Date]) <> 7 (excludes weekends)
+      Weekdays = WEEKDAY('SocialMedia'[Date]) <> 1&& WEEKDAY('SocialMedia'[Date]) <> 7 (excludes weekends)
 
-      Time Filter: HOUR('SocialMedia'[Time]) >= 15 && HOUR('SocialMedia'[Time]) <= 18 (3 PM - 6 PM)
+      Timefilter = HOUR('SocialMedia'[Time]) >= 15 && HOUR('SocialMedia'[Time]) <= 18 (3 PM - 6 PM)
 
-      Impression Filter:MOD('SocialMedia'[impressions],2) = 0 (even impressions)
+      Even Impression filter = MOD('SocialMedia'[impressions],2) = 0 (even impressions)
 
-      Date Filter: MOD(DAY('SocialMedia'[Date]), 2) = 1 (odd date)
+      Odd Date filter = MOD(DAY('SocialMedia'[Date]), 2) = 1 (odd date)
 
-      Word Count Filter: LEN('SocialMedia'[Tweet]) < 30 (word count < 30)
+      Wordcountfilter(<30) = SocialMedia[Wordcount] < 30 (word count < 30)
 
-      Retweets & Likes: ('SocialMedia'[retweets]) + ('SocialMedia'[likes]) (sum of retweets and likes)
+      Retweets&Likes = ('SocialMedia'[retweets]) + ('SocialMedia'[likes]) (sum of retweets and likes)
 
 Step 2: Filtering
 
 - Apply filters:
 
-      Weekday Filter = TRUE
-      Time Filter = TRUE
-      Impression Filter = TRUE
-      Date Filter = TRUE
-      Word Count Filter = TRUE
+      Weekdays = TRUE
+      Timefilter = TRUE
+      Even Impression filter = TRUE
+      Odd Date filter = TRUE
+      Wordcountfilter(<30) = TRUE
 
 Step 3: Chart Creation
 
@@ -150,10 +151,11 @@ Step 3: Chart Creation
 
 - Add fields:
 
-      Sum of Retweets & Likes (value)
+      Sum of Retweets&Likes (value)
       Tweet (legend)
       id (tooltip)
       Date (tooltip)
+      Wordcount (tooltip)
 
 Step 4: Sorting and Top 10
 
@@ -169,7 +171,7 @@ Step 5: Formatting
 
 #### Final Chart
 
-A bar chart showing the top 10 tweets by Retweets & Likes (retweets + likes), filtered by:
+A bar chart showing the top 10 tweets by Retweets&Likes(retweets + likes), filtered by:
 
 - Weekdays (excluding weekends)
 - 3 PM - 6 PM time frame
@@ -179,10 +181,11 @@ A bar chart showing the top 10 tweets by Retweets & Likes (retweets + likes), fi
 
 Each bar represents a tweet, with:
 
-- Sum of Retweets & Likes (value)
-- Tweet (legend)
-- id (tooltip)
-- Date (tooltip)
+- Tweet
+- Sum of Retweets & Likes
+- id
+- Date
+- Wordcountfilter
 
 ## Task 3
 
@@ -191,23 +194,23 @@ Step 1: Data Preparation
 - Load tweet data into Power BI.
 - Create calculated columns:
 
-      Mediafilter = ('SocialMedia'[media engagements]) > MEDIAN('SocialMedia'[engagements])
+      Mediafilter(Median) = ('SocialMedia'[media engagements]) > MEDIAN('SocialMedia'[engagements])
       Datefilter = MONTH('SocialMedia'[Date]) >= 6 && MONTH('SocialMedia'[Date]) <= 8 && YEAR('SocialMedia'[Date]) = 2020
       Timefilter = HOUR('SocialMedia'[Time]) >= 15 && HOUR('SocialMedia'[Time]) <= 18
-      Odd Date = MOD(DAY('SocialMedia'[Date]), 2) = 1
+      Odd Date filter = MOD(DAY('SocialMedia'[Date]), 2) = 1 (odd date)
       Even Media views = MOD('SocialMedia'[media views], 2) = 0
-      Wordcount = LEN('SocialMedia'[Tweet]) < 50
+      Wordcountfilter(<50) = SocialMedia[Wordcount] < 50
 
 Step 2: Filtering
 
 - Apply filters:
 
-      Mediailter = TRUE
+      Mediafilter(Median) = TRUE
       Datefilter = TRUE
       Timefilter = TRUE
-      Odd Date = TRUE
+      Odd Date filter = TRUE
       Even Media Views = TRUE
-      Word Count = TRUE
+      Wordcountfilter(<50) = TRUE
 
 Step 3: Visualization
 
@@ -219,10 +222,11 @@ Step 3: Visualization
       Sum of retweets (value)
       Sum of likes (value)
       Date (tooltip)
+      Wordcount (tooltip)
 
 Step 4: Formatting
 
-- Set chart title: "Replies, Retweets and Likes Comparision".
+- Set chart title: "Comparision of Replies, Retweets and Likes ".
 - Adjust colors, fonts, and layout.
 
 
@@ -285,6 +289,7 @@ Task 2: Top-Performing Tweets Chart
 - Ensure the chart is interactive, allowing users to hover over or click on bars for more information.
 - Screenshot of the top-performing tweets chart.
 ![Task_2](https://github.com/user-attachments/assets/b669b187-cc75-42dc-a633-2874f38d4e65)
+
 Task 3: Media Engagement Comparison Visualization
 - Effective comparison of engagement metrics for tweets with high media engagement.
 - Clear filtering and sorting of tweets based on specific criteria.
@@ -337,3 +342,7 @@ Task 3: Media Engagement Comparison Visualization
 This project demonstrates the power of data visualization in understanding social media engagement and informing marketing strategies. By analyzing Twitter data, we gained valuable insights into user behavior, content performance, and media engagement patterns. These insights can be used to optimize social media content, increase engagement, and improve overall marketing effectiveness.
 
 The project's outcomes and impact highlight the importance of data-driven decision-making in social media marketing. By leveraging data visualization tools and techniques, businesses can unlock the full potential of their social media data and drive meaningful engagement with their audience.
+
+
+
+
